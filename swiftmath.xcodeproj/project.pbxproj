@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */; };
+		32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4701B0349B1003EFE9A /* ViewController.swift */; };
+		32C0B4741B0349B1003EFE9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4721B0349B1003EFE9A /* Main.storyboard */; };
+		32C0B4761B0349B1003EFE9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4751B0349B1003EFE9A /* Images.xcassets */; };
+		32C0B4791B0349B1003EFE9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4771B0349B1003EFE9A /* LaunchScreen.xib */; };
+		32C0B4851B0349B1003EFE9A /* swiftmathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */; };
+		32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B48F1B0349D0003EFE9A /* sffe_real.c */; };
+		32C0B4921B0349D0003EFE9A /* sffe.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4901B0349D0003EFE9A /* sffe.c */; };
+		32C0B4961B034A88003EFE9A /* SFMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4951B034A88003EFE9A /* SFMath.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32C0B47F1B0349B1003EFE9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32C0B4611B0349B1003EFE9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32C0B4681B0349B1003EFE9A;
+			remoteInfo = swiftmath;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		32C0B4691B0349B1003EFE9A /* swiftmath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftmath.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C0B46D1B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32C0B4701B0349B1003EFE9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32C0B4731B0349B1003EFE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		32C0B4751B0349B1003EFE9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32C0B4781B0349B1003EFE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		32C0B47E1B0349B1003EFE9A /* swiftmathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftmathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C0B4831B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftmathTests.swift; sourceTree = "<group>"; };
+		32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftmath-Bridging-Header.h"; sourceTree = "<group>"; };
+		32C0B48F1B0349D0003EFE9A /* sffe_real.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe_real.c; path = ../../sffe/lib/src/sffe_real.c; sourceTree = "<group>"; };
+		32C0B4901B0349D0003EFE9A /* sffe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe.c; path = ../../sffe/lib/src/sffe.c; sourceTree = "<group>"; };
+		32C0B4941B034A88003EFE9A /* SFMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMath.h; sourceTree = "<group>"; };
+		32C0B4951B034A88003EFE9A /* SFMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMath.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32C0B4661B0349B1003EFE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32C0B47B1B0349B1003EFE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32C0B4601B0349B1003EFE9A = {
+			isa = PBXGroup;
+			children = (
+				32C0B46B1B0349B1003EFE9A /* swiftmath */,
+				32C0B4811B0349B1003EFE9A /* swiftmathTests */,
+				32C0B46A1B0349B1003EFE9A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32C0B46A1B0349B1003EFE9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32C0B4691B0349B1003EFE9A /* swiftmath.app */,
+				32C0B47E1B0349B1003EFE9A /* swiftmathTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C0B46B1B0349B1003EFE9A /* swiftmath */ = {
+			isa = PBXGroup;
+			children = (
+				32C0B4931B034A1E003EFE9A /* sffe */,
+				32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */,
+				32C0B4701B0349B1003EFE9A /* ViewController.swift */,
+				32C0B4721B0349B1003EFE9A /* Main.storyboard */,
+				32C0B4751B0349B1003EFE9A /* Images.xcassets */,
+				32C0B4771B0349B1003EFE9A /* LaunchScreen.xib */,
+				32C0B46C1B0349B1003EFE9A /* Supporting Files */,
+				32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */,
+			);
+			path = swiftmath;
+			sourceTree = "<group>";
+		};
+		32C0B46C1B0349B1003EFE9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32C0B46D1B0349B1003EFE9A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32C0B4811B0349B1003EFE9A /* swiftmathTests */ = {
+			isa = PBXGroup;
+			children = (
+				32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */,
+				32C0B4821B0349B1003EFE9A /* Supporting Files */,
+			);
+			path = swiftmathTests;
+			sourceTree = "<group>";
+		};
+		32C0B4821B0349B1003EFE9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32C0B4831B0349B1003EFE9A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32C0B4931B034A1E003EFE9A /* sffe */ = {
+			isa = PBXGroup;
+			children = (
+				32C0B4901B0349D0003EFE9A /* sffe.c */,
+				32C0B48F1B0349D0003EFE9A /* sffe_real.c */,
+				32C0B4941B034A88003EFE9A /* SFMath.h */,
+				32C0B4951B034A88003EFE9A /* SFMath.m */,
+			);
+			name = sffe;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32C0B4681B0349B1003EFE9A /* swiftmath */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32C0B4881B0349B1003EFE9A /* Build configuration list for PBXNativeTarget "swiftmath" */;
+			buildPhases = (
+				32C0B4651B0349B1003EFE9A /* Sources */,
+				32C0B4661B0349B1003EFE9A /* Frameworks */,
+				32C0B4671B0349B1003EFE9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = swiftmath;
+			productName = swiftmath;
+			productReference = 32C0B4691B0349B1003EFE9A /* swiftmath.app */;
+			productType = "com.apple.product-type.application";
+		};
+		32C0B47D1B0349B1003EFE9A /* swiftmathTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32C0B48B1B0349B1003EFE9A /* Build configuration list for PBXNativeTarget "swiftmathTests" */;
+			buildPhases = (
+				32C0B47A1B0349B1003EFE9A /* Sources */,
+				32C0B47B1B0349B1003EFE9A /* Frameworks */,
+				32C0B47C1B0349B1003EFE9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32C0B4801B0349B1003EFE9A /* PBXTargetDependency */,
+			);
+			name = swiftmathTests;
+			productName = swiftmathTests;
+			productReference = 32C0B47E1B0349B1003EFE9A /* swiftmathTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32C0B4611B0349B1003EFE9A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = ThePirateCat;
+				TargetAttributes = {
+					32C0B4681B0349B1003EFE9A = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					32C0B47D1B0349B1003EFE9A = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 32C0B4681B0349B1003EFE9A;
+					};
+				};
+			};
+			buildConfigurationList = 32C0B4641B0349B1003EFE9A /* Build configuration list for PBXProject "swiftmath" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32C0B4601B0349B1003EFE9A;
+			productRefGroup = 32C0B46A1B0349B1003EFE9A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32C0B4681B0349B1003EFE9A /* swiftmath */,
+				32C0B47D1B0349B1003EFE9A /* swiftmathTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32C0B4671B0349B1003EFE9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32C0B4741B0349B1003EFE9A /* Main.storyboard in Resources */,
+				32C0B4791B0349B1003EFE9A /* LaunchScreen.xib in Resources */,
+				32C0B4761B0349B1003EFE9A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32C0B47C1B0349B1003EFE9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32C0B4651B0349B1003EFE9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */,
+				32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */,
+				32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */,
+				32C0B4921B0349D0003EFE9A /* sffe.c in Sources */,
+				32C0B4961B034A88003EFE9A /* SFMath.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32C0B47A1B0349B1003EFE9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32C0B4851B0349B1003EFE9A /* swiftmathTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32C0B4801B0349B1003EFE9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32C0B4681B0349B1003EFE9A /* swiftmath */;
+			targetProxy = 32C0B47F1B0349B1003EFE9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		32C0B4721B0349B1003EFE9A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32C0B4731B0349B1003EFE9A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		32C0B4771B0349B1003EFE9A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32C0B4781B0349B1003EFE9A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32C0B4861B0349B1003EFE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32C0B4871B0349B1003EFE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32C0B4891B0349B1003EFE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../sffe/lib/include,
+				);
+				INFOPLIST_FILE = swiftmath/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-DSFFE_DOUBLE",
+					"-DSFFE_DEVEL",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swiftmath/swiftmath-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32C0B48A1B0349B1003EFE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../sffe/lib/include,
+				);
+				INFOPLIST_FILE = swiftmath/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-DSFFE_DOUBLE",
+					"-DSFFE_DEVEL",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swiftmath/swiftmath-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		32C0B48C1B0349B1003EFE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = swiftmathTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftmath.app/swiftmath";
+			};
+			name = Debug;
+		};
+		32C0B48D1B0349B1003EFE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = swiftmathTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftmath.app/swiftmath";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32C0B4641B0349B1003EFE9A /* Build configuration list for PBXProject "swiftmath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32C0B4861B0349B1003EFE9A /* Debug */,
+				32C0B4871B0349B1003EFE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32C0B4881B0349B1003EFE9A /* Build configuration list for PBXNativeTarget "swiftmath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32C0B4891B0349B1003EFE9A /* Debug */,
+				32C0B48A1B0349B1003EFE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		32C0B48B1B0349B1003EFE9A /* Build configuration list for PBXNativeTarget "swiftmathTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32C0B48C1B0349B1003EFE9A /* Debug */,
+				32C0B48D1B0349B1003EFE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 32C0B4611B0349B1003EFE9A /* Project object */;
+}
