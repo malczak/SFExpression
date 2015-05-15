@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3204C3C31B060FE5002B0108 /* QuartzCore.framework */; };
 		32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */; };
 		32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4701B0349B1003EFE9A /* ViewController.swift */; };
 		32C0B4741B0349B1003EFE9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4721B0349B1003EFE9A /* Main.storyboard */; };
@@ -29,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3204C3C11B05D64F002B0108 /* sffe_real.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sffe_real.h; path = ../../sffe/lib/include/sffe_real.h; sourceTree = "<group>"; };
+		3204C3C21B05D64F002B0108 /* sffe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sffe.h; path = ../../sffe/lib/include/sffe.h; sourceTree = "<group>"; };
+		3204C3C31B060FE5002B0108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32C0B4691B0349B1003EFE9A /* swiftmath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftmath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C0B46D1B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,7 @@
 		32C0B4601B0349B1003EFE9A = {
 			isa = PBXGroup;
 			children = (
+				3204C3C31B060FE5002B0108 /* QuartzCore.framework */,
 				32C0B46B1B0349B1003EFE9A /* swiftmath */,
 				32C0B4811B0349B1003EFE9A /* swiftmathTests */,
 				32C0B46A1B0349B1003EFE9A /* Products */,
@@ -125,6 +131,8 @@
 		32C0B4931B034A1E003EFE9A /* sffe */ = {
 			isa = PBXGroup;
 			children = (
+				3204C3C11B05D64F002B0108 /* sffe_real.h */,
+				3204C3C21B05D64F002B0108 /* sffe.h */,
 				32C0B4901B0349D0003EFE9A /* sffe.c */,
 				32C0B48F1B0349D0003EFE9A /* sffe_real.c */,
 				32C0B4941B034A88003EFE9A /* SFMath.h */,
@@ -456,6 +464,7 @@
 				32C0B48A1B0349B1003EFE9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32C0B48B1B0349B1003EFE9A /* Build configuration list for PBXNativeTarget "swiftmathTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +473,7 @@
 				32C0B48D1B0349B1003EFE9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

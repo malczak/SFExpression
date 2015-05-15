@@ -16,6 +16,8 @@
 
 -(BOOL) parseExpression:(NSString*) expression;
 
+-(double*) getPointerForVar:(NSString *)name;
+
 -(void) setValue:(double)value forVar:(NSString *)name;
 
 -(double) eval;

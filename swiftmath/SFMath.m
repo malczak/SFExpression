@@ -14,7 +14,6 @@
 @interface SFMath ()
 {
     sffe *parser;
-    sfNumber x;
 }
 
 @end
@@ -45,11 +44,17 @@
     return expression;
 }
 
+-(double*) getPointerForVar:(NSString *)name
+{
+    const char *varCStr = [name UTF8String];
+    sfvariable *var = sffe_var(parser, varCStr);
+    return var->value;
+}
+
 -(void) setValue:(double)value forVar:(NSString *)name
 {
-    const char *varCStr = [name UTF8String];    
-    sffe_regvar(&parser, &x, varCStr[0]);
-    x = value;
+    const char *varCStr = [name UTF8String];
+    sffe_setvar(&parser, value, varCStr);
 }
 
 -(double) eval

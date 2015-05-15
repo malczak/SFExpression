@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let math = SFMath();
-        math.setValue(4, forVar: "x");
-        math.parseExpression("2 + x - 1 * sin(x*pi)");
-        let v = math.eval();
-        NSLog("Value for %@ is %f", math.expression, v);
+        math.setValue(1.2, forVar: "mati");
+        var vptr:UnsafeMutablePointer<Double> = math.getPointerForVar("mati");
+        math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
+
+        NSLog("Calculate: '%@'", math.expression);
+        var delta = 0.0;
+        var T = CACurrentMediaTime();
+        while( vptr.memory < 1000000 )
+        {
+            let vn = c(vptr.memory); //0.272759700999814
+            let vp = math.eval(); //0.686457546999009
+            delta = (vp-vn);
+//            NSLog("Value for %f is %f", vptr.memory, v);
+//            math.setValue(vptr.memory, forVar: "mati");
+            vptr.memory += 0.4;
+        }
+        T = CACurrentMediaTime() - T;
+        NSLog("Time: \(T) delta: \(delta)");
         return true
+    }
+    
+    func c(x:Double) -> Double
+    {
+        return x * 2 + 2/x - sin(x*M_PI) * cos(x*M_PI);
     }
 
     func applicationWillResignActive(application: UIApplication) {
