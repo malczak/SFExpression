@@ -11,6 +11,12 @@
 #import "sffe_real.h"
 
 
+sfarg *test( sfarg * const p ) /* abs */
+{
+    sfvalue(p) = 12.0;
+    return (p);
+};
+
 @interface SFMath ()
 {
     sffe *parser;
@@ -79,6 +85,7 @@
 -(void) createParser
 {
     parser = sffe_alloc();
+    sffe_regfunc(&parser, "test", 0, test);
 }
 
 -(void) freeParser

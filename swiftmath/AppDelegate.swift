@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         math.setValue(1.2, forVar: "mati");
         var vptr:UnsafeMutablePointer<Double> = math.getPointerForVar("mati");
         math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
+//        math.parseExpression("2 * test()");
+        var v = math.eval();
+        NSLog("Calculated: \(v)");
+//        return true;
 
         NSLog("Calculate: '%@'", math.expression);
         var delta = 0.0;
@@ -27,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         while( vptr.memory < 1000000 )
         {
             let vn = c(vptr.memory); //0.272759700999814
-            let vp = math.eval(); //0.686457546999009
+            let vp = math.eval(); ///0.686457546999009
             delta = (vp-vn);
 //            NSLog("Value for %f is %f", vptr.memory, v);
 //            math.setValue(vptr.memory, forVar: "mati");
