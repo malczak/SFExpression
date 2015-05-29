@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let s:sffptr = sffptr(&calc);
 //        math.addFunction(&calc)
         var vptr:UnsafeMutablePointer<Double> = math.getPointerForVar("mati");
-//        math.addFunction(nil);
+        math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
 //        math.parseExpression("2 * test()");
-//        let v = math.eval(); //0.686457546999009
-//        NSLog("Output \(v)");
+        var v = math.eval();
+        NSLog("Calculated: \(v)");
 //        return true;
 
         math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
