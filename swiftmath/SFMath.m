@@ -9,7 +9,13 @@
 #import "SFMath.h"
 #import "sffe.h"
 #import "sffe_real.h"
+#include <complex.h>
 
+sfarg *test( sfarg * const p, void * payload ) /* abs */
+{
+    sfvalue(p) = -12.9;
+    return sfaram1(p);
+};
 
 @interface SFMath ()
 {
@@ -70,15 +76,29 @@
     char *expCpy = malloc(size+1);
     memccpy(expCpy, expCStr, 1, size);
     expCpy[size] = '\0';
-    
+
     sffe_parse(&parser, expCpy);
     
     free(expCpy);
 }
 
+-(void) addFunction:(sffptr) function
+{
+    
+}
+
 -(void) createParser
 {
     parser = sffe_alloc();
+    
+    /*
+    sfarg* (^testBlock)(sfarg *const) = ^sfarg*(sfarg * const p) {
+        sfvalue(p) = -12.9;
+        return sfaram1(p);
+    };
+    */
+    
+    sffe_regfunc(&parser, "test", 0, test, NULL);
 }
 
 -(void) freeParser

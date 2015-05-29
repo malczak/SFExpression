@@ -9,6 +9,13 @@
 import UIKit
 import QuartzCore
 
+//typedef sfarg *(*sffptr)(sfarg * const a);
+
+func calc(a:UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg>
+{
+    return a;
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,24 +24,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let math = SFMath();
+        let sf = sfarg();
+//        sffptr
         math.setValue(1.2, forVar: "mati");
+//        let s:sffptr = sffptr(&calc);
+//        math.addFunction(&calc)
         var vptr:UnsafeMutablePointer<Double> = math.getPointerForVar("mati");
-        math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
+//        math.addFunction(nil);
+//        math.parseExpression("2 * test()");
+//        let v = math.eval(); //0.686457546999009
+//        NSLog("Output \(v)");
+//        return true;
 
+        math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
         NSLog("Calculate: '%@'", math.expression);
         var delta = 0.0;
-        var T = CACurrentMediaTime();
-        while( vptr.memory < 1000000 )
+        var avgT = 0.0;
+        var Ts = [CFTimeInterval](count: 100, repeatedValue: 0);
+        for(var i=0; i<100; i+=1)
         {
-            let vn = c(vptr.memory); //0.272759700999814
-            let vp = math.eval(); //0.686457546999009
-            delta = (vp-vn);
-//            NSLog("Value for %f is %f", vptr.memory, v);
-//            math.setValue(vptr.memory, forVar: "mati");
-            vptr.memory += 0.4;
+            vptr.memory = 0.0;
+            var T = CACurrentMediaTime();
+            while( vptr.memory < 1000000 )
+            {
+//                            let vn = c(vptr.memory); //0.250615886759806
+                let vp = math.eval(); //0.653897768329989 (ONLY_COUNT), 0.727334245540042 (FULL PTR)
+                //            delta = (vp-vn);
+                //            NSLog("Value for %f is %f", vptr.memory, v);
+                //            math.setValue(vptr.memory, forVar: "mati");
+                vptr.memory += 0.4;
+            }
+            Ts[i] = CACurrentMediaTime() - T;
         }
-        T = CACurrentMediaTime() - T;
-        NSLog("Time: \(T) delta: \(delta)");
+        var a2 = (Ts.reduce(0,combine: { (a,b) in return a + b})) / Double(Ts.count);
+        NSLog ("Time: \(a2) delta: \(delta)");
         return true
     }
     
