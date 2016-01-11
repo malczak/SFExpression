@@ -11,8 +11,11 @@ import QuartzCore
 
 //typedef sfarg *(*sffptr)(sfarg * const a);
 
-func calc(a:UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg>
+func calc(a:UnsafeMutablePointer<sfarg>, payload:UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg>
 {
+    let v = a.memory as sfarg;
+    let n = v.value;
+    a.memory.value.memory = 10;
     return a;
 }
 
@@ -23,71 +26,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let math = SFMath();
-        let sf = sfarg();
-//        sffptr
-        math.setValue(1.2, forVar: "mati");
-//        let s:sffptr = sffptr(&calc);
-//        math.addFunction(&calc)
-        var vptr:UnsafeMutablePointer<Double> = math.getPointerForVar("mati");
-        math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
-//        math.parseExpression("2 * test()");
-        var v = math.eval();
-        NSLog("Calculated: \(v)");
-//        return true;
+        
+        let ex = SFExpression();
+        ex["x"] = 2.0;
+        ex.parse("2 * sin(x) * cos(x)");
+        var r = ex.eval();
+        NSLog("f(\(ex["x"])) is \(r)");
+        ex["x"] = 4.0;
+        r = ex.eval();
+        NSLog("f(\(ex["x"])) is \(r)");
+        
+        var y = Double(4.0);
+        let expr = SFExpression();
+        expr["x"] = 2.0;
+        try! expr.bindVar("y", ptr: &y);
+        /*
+        
+        sfarg *sflogN( sfarg * const p, void *payload ) /* logN */
+        {
+            sfvalue(p) = log( sfvalue( sfaram1(p) ) )/log( sfvalue( sfaram2(p) ) );;
+            return sfaram2(p);
+        };
+        
+        */
+        expr.addFunction("magick", params: 2){ (p:UnsafeMutablePointer<sfarg>, payload:UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg> in
+            let param1 = p.memory.parg;
+            let param2 = p.memory.parg.memory.parg;
+            p.memory.value.memory = param1.memory.value.memory + param2.memory.value.memory;
+            return param2;
+        };
+        expr.parse("2 * magick(x;y)");
 
-        math.parseExpression("mati * 2 + 2/mati - sin(mati*pi)cos(mati*pi)");
-        NSLog("Calculate: '%@'", math.expression);
-        var delta = 0.0;
-        var avgT = 0.0;
+        var v = expr.eval();
+        NSLog("2 * magick(x;y) === 2 * (x + y) === 2 * \(expr["x"]) * \(y) -> \(v)");
+        
+        y = 6;
+        v = expr.eval();
+        NSLog("2 * magick(x;y) === 2 * (x * y) === 2 * \(expr["x"]) * \(y) -> \(v)");
+        
+        NSLog("Calculate: '%@'", expr.expression);
+        var evals = 0;
+        var sum = 0.0;
         var Ts = [CFTimeInterval](count: 100, repeatedValue: 0);
         for(var i=0; i<100; i+=1)
         {
-            vptr.memory = 0.0;
-            var T = CACurrentMediaTime();
-            while( vptr.memory < 1000000 )
+            sum = 0.0;
+            y = 0.0;
+            let T = CACurrentMediaTime();
+            while( y < 1000000 )
             {
-//                            let vn = c(vptr.memory); //0.250615886759806
-                let vp = math.eval(); //0.653897768329989 (ONLY_COUNT), 0.727334245540042 (FULL PTR)
-                //            delta = (vp-vn);
-                //            NSLog("Value for %f is %f", vptr.memory, v);
-                //            math.setValue(vptr.memory, forVar: "mati");
-                vptr.memory += 0.4;
+                let vp = expr.eval();
+                evals += 1;
+                sum += vp;
+                y += 0.4;
             }
             Ts[i] = CACurrentMediaTime() - T;
         }
-        var a2 = (Ts.reduce(0,combine: { (a,b) in return a + b})) / Double(Ts.count);
-        NSLog ("Time: \(a2) delta: \(delta)");
+        let totalT = Ts.reduce(0,combine: { (a,b) in return a + b});
+        let avgT =  totalT / Double(Ts.count);
+        NSLog ("Total time: \(totalT), avg time: \(avgT), evals: \(evals), sum: \(sum)");
+        NSLog ("Times \(Ts)");
+        
+        //CPU : 11.6913628179973 (ONLY_COUNT), 12.2871189000143 (FULL PTR)
+        //iPhone6s : 11.6913628179973 (ONLY_COUNT), 12.2871189000143 (FULL PTR)
+
         return true
     }
     
-    func c(x:Double) -> Double
-    {
-        return x * 2 + 2/x - sin(x*M_PI) * cos(x*M_PI);
-    }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 

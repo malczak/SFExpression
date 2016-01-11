@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3204C3C31B060FE5002B0108 /* QuartzCore.framework */; };
+		328228E61C44515B0061C35C /* SFExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328228E51C44515A0061C35C /* SFExpression.swift */; };
 		32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */; };
 		32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4701B0349B1003EFE9A /* ViewController.swift */; };
 		32C0B4741B0349B1003EFE9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4721B0349B1003EFE9A /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		32C0B4851B0349B1003EFE9A /* swiftmathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */; };
 		32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B48F1B0349D0003EFE9A /* sffe_real.c */; };
 		32C0B4921B0349D0003EFE9A /* sffe.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4901B0349D0003EFE9A /* sffe.c */; };
-		32C0B4961B034A88003EFE9A /* SFMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4951B034A88003EFE9A /* SFMath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +33,7 @@
 		3204C3C11B05D64F002B0108 /* sffe_real.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sffe_real.h; path = ../../sffe/lib/include/sffe_real.h; sourceTree = "<group>"; };
 		3204C3C21B05D64F002B0108 /* sffe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sffe.h; path = ../../sffe/lib/include/sffe.h; sourceTree = "<group>"; };
 		3204C3C31B060FE5002B0108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		328228E51C44515A0061C35C /* SFExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFExpression.swift; sourceTree = "<group>"; };
 		32C0B4691B0349B1003EFE9A /* swiftmath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftmath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C0B46D1B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,8 +47,6 @@
 		32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftmath-Bridging-Header.h"; sourceTree = "<group>"; };
 		32C0B48F1B0349D0003EFE9A /* sffe_real.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe_real.c; path = ../../sffe/lib/src/sffe_real.c; sourceTree = "<group>"; };
 		32C0B4901B0349D0003EFE9A /* sffe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe.c; path = ../../sffe/lib/src/sffe.c; sourceTree = "<group>"; };
-		32C0B4941B034A88003EFE9A /* SFMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMath.h; sourceTree = "<group>"; };
-		32C0B4951B034A88003EFE9A /* SFMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMath.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +97,6 @@
 				32C0B4751B0349B1003EFE9A /* Images.xcassets */,
 				32C0B4771B0349B1003EFE9A /* LaunchScreen.xib */,
 				32C0B46C1B0349B1003EFE9A /* Supporting Files */,
-				32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */,
 			);
 			path = swiftmath;
 			sourceTree = "<group>";
@@ -131,12 +129,12 @@
 		32C0B4931B034A1E003EFE9A /* sffe */ = {
 			isa = PBXGroup;
 			children = (
+				32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */,
 				3204C3C11B05D64F002B0108 /* sffe_real.h */,
 				3204C3C21B05D64F002B0108 /* sffe.h */,
 				32C0B4901B0349D0003EFE9A /* sffe.c */,
 				32C0B48F1B0349D0003EFE9A /* sffe_real.c */,
-				32C0B4941B034A88003EFE9A /* SFMath.h */,
-				32C0B4951B034A88003EFE9A /* SFMath.m */,
+				328228E51C44515A0061C35C /* SFExpression.swift */,
 			);
 			name = sffe;
 			sourceTree = "<group>";
@@ -185,6 +183,8 @@
 		32C0B4611B0349B1003EFE9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = ThePirateCat;
 				TargetAttributes = {
@@ -243,9 +243,9 @@
 			files = (
 				32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */,
 				32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */,
+				328228E61C44515B0061C35C /* SFExpression.swift in Sources */,
 				32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */,
 				32C0B4921B0349D0003EFE9A /* sffe.c in Sources */,
-				32C0B4961B034A88003EFE9A /* SFMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
