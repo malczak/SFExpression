@@ -69,14 +69,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     */
     expr.addFunction("magick", params: 2) {
       (p: UnsafeMutablePointer<sfarg>, payload: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg> in
-      var arg = SFArgument(p);
-      let in_x = SFArgument(arg.param1())
-      let in_y = SFArgument(arg.param1())
+      var arg = SFArgument(p)
+      let in_y = arg.param1()
+      let in_x = arg.param2()
       arg.value = sin(in_x.value) + in_y.value;
       return in_x.memory;
     }
+
+    expr.addFunction("magick_f", params: 2) {
+      (p: UnsafeMutablePointer<sfarg>, payload: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg> in
+      let arg = p.memory;
+      let in_y = arg.parg;
+      let in_x = in_y.memory.parg;
+      arg.value.memory = sin(in_x.memory.value.memory) + in_y.memory.value.memory
+      return in_x;
+    }
+
     expr.addFunction("magick2", params: 2, function: sf_magick2)
-    expr.parse("2 * magick(x;y)")
+    expr.parse("2 * magick_f(x;y)")
 
     var v = expr.eval()
     NSLog("2 * magick(x;y) === 2 * (x + y) === 2 * \(expr["x"]) * \(y) -> \(v)")

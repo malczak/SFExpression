@@ -9,24 +9,24 @@
 import Foundation
 
 
-func fzval(a: UnsafeMutablePointer<sfarg>) -> Double {
+func v(a: UnsafeMutablePointer<sfarg>) -> Double {
   return a.memory.value.memory
 }
 
-func fparam1(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
+func p1(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
   return p.memory.parg
 }
 
-func fparam2(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
-  return fparam1(p).memory.parg
+func p2(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
+  return p1(p).memory.parg
 }
 
-func fparam3(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
-  return fparam2(p).memory.parg
+func p3(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
+  return p2(p).memory.parg
 }
 
-func fparam4(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
-  return fparam3(p).memory.parg
+func p4(p: UnsafeMutablePointer<sfarg>) -> UnsafeMutablePointer<sfarg> {
+  return p3(p).memory.parg
 }
 
 
@@ -50,30 +50,30 @@ struct SFArgument {
     self.ptr = ptr;
   }
   
-  subscript(index:UInt8) -> UnsafeMutablePointer<sfarg> {
+  subscript(index:UInt8) -> SFArgument {
     var counter = index
     var newPtr = ptr
     while counter > 0 {
       counter -= 1;
       newPtr = newPtr.memory.parg;
     }
-    return newPtr;
+    return SFArgument(newPtr);
   }
   
-  func param1() -> UnsafeMutablePointer<sfarg> {
-    return ptr.memory.parg
+  func param1() -> SFArgument {
+    return SFArgument(p1(ptr))
   }
   
-  func param2() -> UnsafeMutablePointer<sfarg> {
-    return param1().memory.parg
+  func param2() -> SFArgument {
+    return SFArgument(p2(ptr))
   }
   
-  func param3() -> UnsafeMutablePointer<sfarg> {
-    return param2().memory.parg
+  func param3() -> SFArgument {
+    return SFArgument(p3(ptr))
   }
   
-  func param4() -> UnsafeMutablePointer<sfarg> {
-    return param3().memory.parg
+  func param4() -> SFArgument {
+    return SFArgument(p4(ptr))
   }
   
 }
