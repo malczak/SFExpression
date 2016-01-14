@@ -17,6 +17,7 @@
 		32C0B4851B0349B1003EFE9A /* swiftmathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */; };
 		32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B48F1B0349D0003EFE9A /* sffe_real.c */; };
 		32C0B4921B0349D0003EFE9A /* sffe.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4901B0349D0003EFE9A /* sffe.c */; };
+		32D5F2441C4489A500940754 /* custom_.c in Sources */ = {isa = PBXBuildFile; fileRef = 32D5F2431C4489A500940754 /* custom_.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftmath-Bridging-Header.h"; sourceTree = "<group>"; };
 		32C0B48F1B0349D0003EFE9A /* sffe_real.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe_real.c; path = ../../sffe/lib/src/sffe_real.c; sourceTree = "<group>"; };
 		32C0B4901B0349D0003EFE9A /* sffe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe.c; path = ../../sffe/lib/src/sffe.c; sourceTree = "<group>"; };
+		32D5F2421C44890700940754 /* custom_.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = custom_.h; sourceTree = "<group>"; };
+		32D5F2431C4489A500940754 /* custom_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = custom_.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				32C0B4901B0349D0003EFE9A /* sffe.c */,
 				32C0B48F1B0349D0003EFE9A /* sffe_real.c */,
 				328228E51C44515A0061C35C /* SFExpression.swift */,
+				32D5F2421C44890700940754 /* custom_.h */,
+				32D5F2431C4489A500940754 /* custom_.c */,
 			);
 			name = sffe;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D5F2441C4489A500940754 /* custom_.c in Sources */,
 				32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */,
 				32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */,
 				328228E61C44515B0061C35C /* SFExpression.swift in Sources */,
@@ -373,6 +379,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -385,6 +392,7 @@
 					"-DSFFE_DEVEL",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "swiftmath/swiftmath-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -407,6 +415,7 @@
 					"-DSFFE_DEVEL",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "swiftmath/swiftmath-Bridging-Header.h";
 			};
 			name = Release;
