@@ -14,41 +14,73 @@ Weak sides
  * complicated syntax of custom functions
  * not thread save
 
-Simple example in Swift
+Custom variable accessing example
 
 ```swift
-let ex = SFExpression();
-ex["x"] = 2.0;
-ex.parse("2 * sin(x) * cos(x)");
+let ex = SFExpression()
+ex["x"] = 0.0
+ex.parse("2 * sin(x) * cos(x)")
 
-var r = ex.eval();
-NSLog("f(\(ex["x"])) is \(r)");
+ex["x"] = 2.0
+var r = ex.eval() // r = -0.756802495307928
 
-ex["x"] = 4.0;
-r = ex.eval();
-NSLog("f(\(ex["x"])) is \(r)");
+ex["x"] = 4.0
+r = ex.eval() // r = 0.989358246623382
 ```
 
-
-More complicated example with custom function and variable binding
+Variable binding is a way faster way to provide variables
 ```swift
-var y = Double(4.0);
-let expr = SFExpression();
-expr["x"] = 2.0;
-try! expr.bindVar("y", ptr: &y);
+var x = 0.0
+let expr = SFExpression()
+try! expr.bindVar("x", ptr: &x)
+ex.parse("2 * sin(x) * cos(x)")
+    
+x = 2.0
+var r = ex.eval() // r = -0.756802495307928
 
-expr.addFunction("magick", params: 2){ (p:UnsafeMutablePointer<sfarg>, payload:UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg> in
-    let param1 = p.memory.parg;
-    let param2 = p.memory.parg.memory.parg;
-    p.memory.value.memory = param1.memory.value.memory + param2.memory.value.memory;
-    return param2;
-};
-expr.parse("2 * magick(x;y)");
-
-var v = expr.eval();
-NSLog("2 * magick(x;y) === 2 * (x + y) === 2 * \(expr["x"]) * \(y) -> \(v)");
-
-y = 6;
-v = expr.eval();
-NSLog("2 * magick(x;y) === 2 * (x * y) === 2 * \(expr["x"]) * \(y) -> \(v)");
+x = 4.0
+r = ex.eval() // r = 0.989358246623382
 ```
+
+Swift callback can be provided as a custom function
+```swift
+var x = 1.0, y = 2.0
+let expr = SFExpression()
+try! expr.bindVar("x", ptr: &x)
+try! expr.bindVar("y", ptr: &y)
+
+expr.addFunction("magick", params: 2) {
+      (p: UnsafeMutablePointer<sfarg>, payload: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg> in
+      var arg = SFArgument(p)
+      let in_y = arg.param1()
+      let in_x = arg.param2()
+      arg.value = sin(in_x.value) + in_y.value;
+      return in_x.memory;
+    }
+    
+expr.parse("2 * magick_f(x;y)")
+expr.eval()
+```
+
+Example above uses helper struct ```SFArgument``` to access method arguments. To improve eval time direct access can be used
+
+```swift
+var x = 1.0, y = 2.0
+let expr = SFExpression()
+try! expr.bindVar("x", ptr: &x)
+try! expr.bindVar("y", ptr: &y)
+
+expr.addFunction("magick_", params: 2) {
+      (p: UnsafeMutablePointer<sfarg>, payload: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<sfarg> in
+      let arg = p.memory;
+      let in_y = arg.parg;
+      let in_x = in_y.memory.parg;
+      arg.value.memory = sin(in_x.memory.value.memory) + in_y.memory.value.memory
+      return in_x;
+    }
+    
+expr.parse("2 * magick_f(x;y)")
+expr.eval()
+```
+
+Custom methods can also be provided as Swift or C functions.
