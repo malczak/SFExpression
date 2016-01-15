@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import SFExpression
 
 //typedef sfarg *(*sffptr)(sfarg * const a)
 

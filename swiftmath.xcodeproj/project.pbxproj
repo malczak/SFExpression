@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3204C3C31B060FE5002B0108 /* QuartzCore.framework */; };
-		328228E61C44515B0061C35C /* SFExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328228E51C44515A0061C35C /* SFExpression.swift */; };
+		32564D0D1C487E200080508E /* custom_.c in Sources */ = {isa = PBXBuildFile; fileRef = 32564D0B1C487E200080508E /* custom_.c */; };
+		32564D181C48813C0080508E /* SFExpression.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32564D171C48813C0080508E /* SFExpression.framework */; };
+		32564D191C4881420080508E /* SFExpression.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32564D171C48813C0080508E /* SFExpression.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */; };
 		32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4701B0349B1003EFE9A /* ViewController.swift */; };
 		32C0B4741B0349B1003EFE9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4721B0349B1003EFE9A /* Main.storyboard */; };
 		32C0B4761B0349B1003EFE9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4751B0349B1003EFE9A /* Images.xcassets */; };
 		32C0B4791B0349B1003EFE9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4771B0349B1003EFE9A /* LaunchScreen.xib */; };
 		32C0B4851B0349B1003EFE9A /* swiftmathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */; };
-		32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B48F1B0349D0003EFE9A /* sffe_real.c */; };
-		32C0B4921B0349D0003EFE9A /* sffe.c in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4901B0349D0003EFE9A /* sffe.c */; };
-		32D5F2441C4489A500940754 /* custom_.c in Sources */ = {isa = PBXBuildFile; fileRef = 32D5F2431C4489A500940754 /* custom_.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +29,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3248D22D1C4875390062D838 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				32564D191C4881420080508E /* SFExpression.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		3204C3C11B05D64F002B0108 /* sffe_real.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sffe_real.h; path = ../../sffe/lib/include/sffe_real.h; sourceTree = "<group>"; };
-		3204C3C21B05D64F002B0108 /* sffe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sffe.h; path = ../../sffe/lib/include/sffe.h; sourceTree = "<group>"; };
 		3204C3C31B060FE5002B0108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		328228E51C44515A0061C35C /* SFExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFExpression.swift; sourceTree = "<group>"; };
+		32564D0B1C487E200080508E /* custom_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = custom_.c; sourceTree = "<group>"; };
+		32564D0C1C487E200080508E /* custom_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = custom_.h; sourceTree = "<group>"; };
+		32564D171C48813C0080508E /* SFExpression.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SFExpression.framework; sourceTree = "<group>"; };
 		32C0B4691B0349B1003EFE9A /* swiftmath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftmath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C0B46D1B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,11 +58,6 @@
 		32C0B47E1B0349B1003EFE9A /* swiftmathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftmathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C0B4831B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C0B4841B0349B1003EFE9A /* swiftmathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftmathTests.swift; sourceTree = "<group>"; };
-		32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftmath-Bridging-Header.h"; sourceTree = "<group>"; };
-		32C0B48F1B0349D0003EFE9A /* sffe_real.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe_real.c; path = ../../sffe/lib/src/sffe_real.c; sourceTree = "<group>"; };
-		32C0B4901B0349D0003EFE9A /* sffe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sffe.c; path = ../../sffe/lib/src/sffe.c; sourceTree = "<group>"; };
-		32D5F2421C44890700940754 /* custom_.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = custom_.h; sourceTree = "<group>"; };
-		32D5F2431C4489A500940754 /* custom_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = custom_.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */,
+				32564D181C48813C0080508E /* SFExpression.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +83,7 @@
 		32C0B4601B0349B1003EFE9A = {
 			isa = PBXGroup;
 			children = (
+				32564D171C48813C0080508E /* SFExpression.framework */,
 				3204C3C31B060FE5002B0108 /* QuartzCore.framework */,
 				32C0B46B1B0349B1003EFE9A /* swiftmath */,
 				32C0B4811B0349B1003EFE9A /* swiftmathTests */,
@@ -93,7 +103,8 @@
 		32C0B46B1B0349B1003EFE9A /* swiftmath */ = {
 			isa = PBXGroup;
 			children = (
-				32C0B4931B034A1E003EFE9A /* sffe */,
+				32564D0B1C487E200080508E /* custom_.c */,
+				32564D0C1C487E200080508E /* custom_.h */,
 				32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */,
 				32C0B4701B0349B1003EFE9A /* ViewController.swift */,
 				32C0B4721B0349B1003EFE9A /* Main.storyboard */,
@@ -129,21 +140,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		32C0B4931B034A1E003EFE9A /* sffe */ = {
-			isa = PBXGroup;
-			children = (
-				32C0B48E1B0349CF003EFE9A /* swiftmath-Bridging-Header.h */,
-				3204C3C11B05D64F002B0108 /* sffe_real.h */,
-				3204C3C21B05D64F002B0108 /* sffe.h */,
-				32C0B4901B0349D0003EFE9A /* sffe.c */,
-				32C0B48F1B0349D0003EFE9A /* sffe_real.c */,
-				328228E51C44515A0061C35C /* SFExpression.swift */,
-				32D5F2421C44890700940754 /* custom_.h */,
-				32D5F2431C4489A500940754 /* custom_.c */,
-			);
-			name = sffe;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +150,7 @@
 				32C0B4651B0349B1003EFE9A /* Sources */,
 				32C0B4661B0349B1003EFE9A /* Frameworks */,
 				32C0B4671B0349B1003EFE9A /* Resources */,
+				3248D22D1C4875390062D838 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -246,12 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D5F2441C4489A500940754 /* custom_.c in Sources */,
-				32C0B4911B0349D0003EFE9A /* sffe_real.c in Sources */,
+				32564D0D1C487E200080508E /* custom_.c in Sources */,
 				32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */,
-				328228E61C44515B0061C35C /* SFExpression.swift in Sources */,
 				32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */,
-				32C0B4921B0349D0003EFE9A /* sffe.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +373,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -386,6 +384,7 @@
 					../sffe/lib/include,
 				);
 				INFOPLIST_FILE = swiftmath/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"-DSFFE_DOUBLE",
@@ -403,12 +402,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					../sffe/lib/include,
 				);
 				INFOPLIST_FILE = swiftmath/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"-DSFFE_DOUBLE",
