@@ -1,0 +1,6 @@
+module sffe [system][extern_c] {
+  header "defines.h"
+  header "sffe_real.h"
+  header "sffe.h"
+  export *
+}
