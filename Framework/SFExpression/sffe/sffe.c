@@ -157,7 +157,6 @@ unsigned char sf_priority(char * chr){
       return 0x00;
     default:
       return 0x80;
-      
   }
 }
 
@@ -252,7 +251,9 @@ void sffe_clear(sffe ** parser)
   
   p->expression = NULL;
   p->args = NULL;
+  p->argCount = 0;
   p->oprs = NULL;
+  p->oprCount = 0;
 }
 
 void sffe_free(sffe ** parser)
@@ -434,7 +435,7 @@ sffunction *userfunction(const sffe * const p, char *fname, size_t len)
 char sffe_donum(char **str)
 {
   /* parse number in format [-+]ddd[.dddd[e[+-]ddd]]  */
-  unsigned char flag = 0;	/*bit 1 - dot, bit 2 - dec, bits 3,4 - stan, bits 5..8 - error */
+  unsigned char flag = 0;	/*bit 1 - dot, bit 2 - dec, bits 3,4 - state, bits 5..8 - error */
   if (**str == '-')
   {
     flag = 0x80;
@@ -570,18 +571,54 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
   char *ech;
   char *ch1, *ch2;
   
-  unsigned int ui1;//, ui2;
-  unsigned char token;
+  unsigned int ui1 = 0;
+  unsigned char token = '\0';
+  
+  /*
+  struct __token {
+    unsigned char symbol;
+    unsigned int position;
+    struct __token *next;
+    struct __token *prev;
+    union {
+      sfarg *argument;
+      sffunction *function;
+    } data;
+  }
+  */
   
 //  enum sffe_error err;
   
   /**************used defines */
   
+#define append_operand() \
+{\
+  _parser->args = (sfarg *) realloc(_parser->args, (_parser->argCount + 1) * sizeof(sfarg));\
+  if (!_parser->args)\
+  {\
+    THROW(SFFE_ERROR_MEM_ERROR);\
+  }\
+  _argument = _parser->args + (_parser->argCount++);\
+}
+
+#define append_function(fnc) \
+{\
+  _functions = (sffunction **) realloc(_functions, (++_parser->oprCount) * sizeof(sffunction *));\
+  if (!_functions)\
+  {\
+    THROW(SFFE_ERROR_MEM_ERROR);\
+  }\
+  _functions[_parser->oprCount - 1] = fnc;\
+}
+
 #define append_token(chr)\
 {\
   tokens = (char*)realloc(tokens,ui1+2);\
+  if (!tokens)\
+  {\
+    THROW(SFFE_ERROR_MEM_ERROR);\
+  }\
   tokens[ui1++] = chr;\
-  ch2 = tokens+ui1-1;\
   token = chr;\
   tokens[ui1] = '\0';\
 }
@@ -713,9 +750,10 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
 #endif
     
     /*! PHASE 2 !!!!!!!! tokenize expression, lexical analysis (needs optimizations) */
+    sffunction *token_function = NULL;
     *tokens = '\0';
     ch2 = NULL;
-    ui1 = 0;
+    ui1 = 0; /* tokens count */
     ch1 = NULL;			/*string starting position */
     ech = (char*)_parser->expression;
     token = '(';			/* in case of leading '-' */
@@ -729,14 +767,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
         switch (sffe_doname(&ech))
         {
           case 1:		/* const or variable */
-            _parser->args = (sfarg *) realloc(_parser->args, (_parser->argCount + 1) * sizeof(sfarg));
-            
-            if (!_parser->args)
-            {
-              THROW(SFFE_ERROR_MEM_ERROR);
-            }
-            
-            _argument = _parser->args + (_parser->argCount++);
+            append_operand();
             _argument->type = sfvar_type_ptr;
             _argument->value = (SFNumber *) sffe_variable(_parser, ch1, (size_t) (ech - ch1));
             
@@ -758,30 +789,20 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             break;
             
           case 2:		/* function */
-            _functions = (sffunction **) realloc(_functions, (_parser->oprCount + 1) * sizeof(sffunction *));
-            
-            if (!_functions)
-            {
-              THROW(SFFE_ERROR_MEM_ERROR);
-            }
-            
-            _function = _functions + (_parser->oprCount++);
-            *_function = NULL;
-            
             if (_parser->userfCount)
             {
               /*is it user defined function */
-              *_function = (sffunction *) (void *) userfunction(_parser, ch1, (size_t) (ech - ch1));
+              token_function = (sffunction *) (void *) userfunction(_parser, ch1, (size_t) (ech - ch1));
             }
             
-            if (!*_function)
+            if (!token_function)
             {
               /*if not, is it build in function */
-              *_function = (sffunction *) (void *) sffe_function(ch1, (size_t)(ech - ch1));
+              token_function = (sffunction *) (void *) sffe_function(ch1, (size_t)(ech - ch1));
             }
             
             /* if not -> ERROR */
-            if (!*_function)
+            if (!token_function)
             {
               THROW(SFFE_ERROR_INVALID_FUNCTION);
             }
@@ -804,16 +825,8 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             THROW(SFFE_ERROR_INAVLID_NUMBER);
           }
           
-          /*epx */
-          _parser->args = (sfarg *) realloc(_parser->args, (++_parser->argCount) * sizeof(sfarg));
-          
-          if (!_parser->args)
-          {
-            THROW(SFFE_ERROR_MEM_ERROR);
-          }
-          
-          _argument = _parser->args + _parser->argCount - 1;
-          /* '-n'/'+n', which was parsed as 0*n */
+          append_operand();
+          /* '-n'/'+n', which was parsed as 0*n for vars */
           if ((ech - ch1) == 1 && (*ch1 == '-'))
           {
             sfset(_argument, -1)
@@ -826,19 +839,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
         } else
         /* if not, we have operator */
         {
-          sffunction *function = sffe_operator(*ech);
-          
-          if (function)
-          {
-            _functions = (sffunction **) realloc(_functions, (++_parser->oprCount) * sizeof(sffunction *));
-            
-            if (!_functions)
-            {
-              THROW(SFFE_ERROR_MEM_ERROR);
-            }
-            
-            _functions[_parser->oprCount - 1] = function;
-          };
+          token_function = sffe_operator(*ech);
           
           ch1 = ech;
           token = *ech;
@@ -846,38 +847,35 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
         };
       
       
+      /*
+        BUG:
+        * unhandled case is eq (-PI/-x) -> this is parsed as -PI/-1 * x => (-PI/-1) * x => expected: -PI / ( -1 * x) OR -PI / -_prefix(x)
+       */
       /* no error and already has any opcodes - check for skipped multiplication. Handle nf, n(, )(, )f, )n, fn */
       if (ui1 > 0)
       {
-        if (token == 'f' || token == 'n' || token == '(') // last token
+        if (token == 'f' || token == 'n' || token == '(') // current token
         {
-          if (*ch2 == 'n' || *ch2 == ')') // last-1 token
+          unsigned char last_token = tokens[ui1-1];
+          if (last_token == 'n' || last_token == ')') // last-1 token
           {
-            sffunction *oprptr = sffe_operator('*');
-            _functions = (sffunction **) realloc(_functions, (++_parser->oprCount) * sizeof(sffunction *));
-            
-            if (!_functions)
-            {
-              THROW(SFFE_ERROR_MEM_ERROR);
-            }
-            
-            /* if last token was function inject multiplication before it */
-            if (token == 'f')
-            {
-              _functions[_parser->oprCount - 1] = _functions[_parser->oprCount - 2];
-              _functions[_parser->oprCount - 2] = (sffunction *) oprptr;
-            } else {
-              _functions[_parser->oprCount - 1] = (sffunction *) oprptr;
-            }
-            
             // inject multiplication
             unsigned char tmp = token;
+            append_function(sffe_operator('*'))
             append_token('*');
             token = tmp;
           };
         }
       }
       
+      // if any function -> append it !
+      if(token_function)
+      {
+        append_function(token_function)
+      }
+      token_function = NULL;
+      
+      // store token
       append_token(token);
     };
     
@@ -922,6 +920,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
       {
         switch (*ech)
         {
+            
             /*  O */
           case '+':
           case '-':
@@ -980,6 +979,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             _function += 1;
             ch1 = NULL;
           }break;
+            
             /* F  */
           case 'f':{
             _expression->stck = (struct _operator *) realloc(_expression->stck, (_expression->size + 1) * sizeof(struct _operator));
@@ -1015,6 +1015,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             //                    }
             
           }break;	// skip to ( ???
+            
             /* (  */
           case '(':{
             /* store current stack */
@@ -1032,6 +1033,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             
             token = 0;
           }break;
+            
             /*  ; */
           case ';':{
             /* check if anything has been read !!! */
@@ -1065,6 +1067,7 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             /* reduce a number of allowed parameters */
             opstck->type = 0x60 | max(0,(opstck->type & 0x1f) - 1);
           }break;
+            
             /* )  */
           case ')':{
             if (ch1)
@@ -1123,10 +1126,12 @@ sffe_error sffe_parse(sffe ** parser, const char *expression)
             }
             
           }break;
+            
             /* n */
           case 'n':
             ch1 = ech;
             break;
+            
         };
         ech += 1;
       };

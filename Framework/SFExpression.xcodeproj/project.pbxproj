@@ -121,8 +121,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				320E63841CC6655C00225699 /* sffe_real.h in Headers */,
 				320E63611CC6649900225699 /* SFExpression.h in Headers */,
+				320E63841CC6655C00225699 /* sffe_real.h in Headers */,
 				320E63821CC6655C00225699 /* sffe.h in Headers */,
 				320E63801CC6655C00225699 /* defines.h in Headers */,
 			);
