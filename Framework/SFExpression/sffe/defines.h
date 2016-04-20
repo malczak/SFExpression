@@ -1,0 +1,3 @@
+#define SFFE_DOUBLE 1
+
+#define SFFE_DIRECT_FPTR 1
