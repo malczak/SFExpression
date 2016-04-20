@@ -8,6 +8,8 @@
 
 import UIKit
 import QuartzCore
+import Zip
+//import SMath
 import SFExpression
 
 //typedef sfarg *(*sffptr)(sfarg * const a)
@@ -50,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.run()
     })
 
-
     return true
   }
 
@@ -87,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     expr.addFunction("magick2", params: 2, function: sf_magick2)
-    expr.parse("2 * magick_f(x;y)")
+    expr.parse("2 * magick2(x;y)")
 
     var v = expr.eval()
     NSLog("2 * magick(x;y) === 2 * (x + y) === 2 * \(expr["x"]) * \(y) -> \(v)")

@@ -5,6 +5,6 @@
 #define SFFE_DOUBLE 1
 #define SFFE_DIRECT_FPTR 1
 
-#import "sffe.h"
+//#import "sffe.h"
 
 #import "custom_.h"

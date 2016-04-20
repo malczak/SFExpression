@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3204C3C31B060FE5002B0108 /* QuartzCore.framework */; };
+		320E63521CC6608800225699 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 320E62F81CC64DED00225699 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		320E63881CC6667200225699 /* SFExpression.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 320E63851CC6661F00225699 /* SFExpression.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		320E638A1CC66A9100225699 /* SFExpression.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320E63891CC66A9100225699 /* SFExpression.framework */; };
 		32564D0D1C487E200080508E /* custom_.c in Sources */ = {isa = PBXBuildFile; fileRef = 32564D0B1C487E200080508E /* custom_.c */; };
-		32564D181C48813C0080508E /* SFExpression.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32564D171C48813C0080508E /* SFExpression.framework */; };
-		32564D191C4881420080508E /* SFExpression.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32564D171C48813C0080508E /* SFExpression.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32C0B46F1B0349B1003EFE9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */; };
 		32C0B4711B0349B1003EFE9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0B4701B0349B1003EFE9A /* ViewController.swift */; };
 		32C0B4741B0349B1003EFE9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C0B4721B0349B1003EFE9A /* Main.storyboard */; };
@@ -36,7 +37,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				32564D191C4881420080508E /* SFExpression.framework in Embed Frameworks */,
+				320E63521CC6608800225699 /* Zip.framework in Embed Frameworks */,
+				320E63881CC6667200225699 /* SFExpression.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,9 +47,11 @@
 
 /* Begin PBXFileReference section */
 		3204C3C31B060FE5002B0108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		320E62F81CC64DED00225699 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Zip.framework; sourceTree = "<group>"; };
+		320E63851CC6661F00225699 /* SFExpression.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFExpression.framework; path = /Users/malczak/Private/SFExpression/SFExpression.framework; sourceTree = "<absolute>"; };
+		320E63891CC66A9100225699 /* SFExpression.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SFExpression.framework; sourceTree = "<group>"; };
 		32564D0B1C487E200080508E /* custom_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = custom_.c; sourceTree = "<group>"; };
 		32564D0C1C487E200080508E /* custom_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = custom_.h; sourceTree = "<group>"; };
-		32564D171C48813C0080508E /* SFExpression.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SFExpression.framework; sourceTree = "<group>"; };
 		32C0B4691B0349B1003EFE9A /* swiftmath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftmath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C0B46D1B0349B1003EFE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C0B46E1B0349B1003EFE9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3204C3C41B060FE5002B0108 /* QuartzCore.framework in Frameworks */,
-				32564D181C48813C0080508E /* SFExpression.framework in Frameworks */,
+				320E638A1CC66A9100225699 /* SFExpression.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +87,8 @@
 		32C0B4601B0349B1003EFE9A = {
 			isa = PBXGroup;
 			children = (
-				32564D171C48813C0080508E /* SFExpression.framework */,
+				320E63891CC66A9100225699 /* SFExpression.framework */,
+				320E62F81CC64DED00225699 /* Zip.framework */,
 				3204C3C31B060FE5002B0108 /* QuartzCore.framework */,
 				32C0B46B1B0349B1003EFE9A /* swiftmath */,
 				32C0B4811B0349B1003EFE9A /* swiftmathTests */,
@@ -187,7 +192,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = ThePirateCat;
 				TargetAttributes = {
 					32C0B4681B0349B1003EFE9A = {
@@ -308,6 +313,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -381,7 +387,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					../sffe/lib/include,
+					"$(PROJECT_DIR)/SFExpression.framework/Headers",
 				);
 				INFOPLIST_FILE = swiftmath/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -390,6 +396,7 @@
 					"-DSFFE_DOUBLE",
 					"-DSFFE_DEVEL",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cat.thepirate.ios.hashids.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "swiftmath/swiftmath-Bridging-Header.h";
@@ -409,7 +416,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					../sffe/lib/include,
+					"$(PROJECT_DIR)/SFExpression.framework/Headers",
 				);
 				INFOPLIST_FILE = swiftmath/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -418,6 +425,7 @@
 					"-DSFFE_DOUBLE",
 					"-DSFFE_DEVEL",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cat.thepirate.ios.hashids.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "swiftmath/swiftmath-Bridging-Header.h";
@@ -438,6 +446,7 @@
 				);
 				INFOPLIST_FILE = swiftmathTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cat.thepirate.ios.hashids.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftmath.app/swiftmath";
 			};
@@ -453,6 +462,7 @@
 				);
 				INFOPLIST_FILE = swiftmathTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cat.thepirate.ios.hashids.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiftmath.app/swiftmath";
 			};

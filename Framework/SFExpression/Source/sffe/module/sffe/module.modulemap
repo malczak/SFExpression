@@ -1,4 +1,0 @@
-module sffe {
-  header "../../sffemodule.h"
-  export *
-}
